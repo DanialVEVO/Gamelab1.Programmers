@@ -13,7 +13,7 @@ public class CloudStart : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		Instantiate(clouds, cloudStart.position, Quaternion.identity);
 	}
 	
 	// Update is called once per frame
