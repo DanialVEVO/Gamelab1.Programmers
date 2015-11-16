@@ -9,17 +9,14 @@ using System.Collections;
 public class CollectAbilitiesScript : MonoBehaviour {
 
 	public int abilityId;
-	//public GameObject pickupEffect;
 	public AbilitySwitchScript abilitySwitchScr;
-	public Sprite unlockedAbilityIcon;
-
+	public AbilityGuideScript abilityGuideScr;
 	public float floatHeight;
 	private Vector3 floatStartPos;
 	public bool floatUp;
 	public float floatSpeed;
 	public float rotationSpeed;
-
-	public AbilityGuideScript abilityGuideScr;
+	//public GameObject pickupEffect;
 	
 	void Start () {
 		floatStartPos = transform.position;
@@ -47,8 +44,8 @@ public class CollectAbilitiesScript : MonoBehaviour {
 	}
 	
 	void UnlockAbility () {
-		abilitySwitchScr.abilityImgSprArr[abilityId] = unlockedAbilityIcon;
 		abilitySwitchScr.abilityUnlocked[abilityId] = true;
+		abilitySwitchScr.SetAbilitieSpr();
 		abilitySwitchScr.GetAbilityImg();
 	}
 	

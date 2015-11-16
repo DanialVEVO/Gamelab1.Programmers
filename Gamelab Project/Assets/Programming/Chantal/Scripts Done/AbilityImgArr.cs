@@ -12,11 +12,9 @@ public class AbilityImgArr : MonoBehaviour {
 	public int stateNum;
 	public AbilitySwitchScript abilitySwitchScr;
 
-
 	void Start () {
 		ShowImg();
 	}
-
 
 	public void ShowImg () {
 		int switchAbilityNum = abilitySwitchScr.abilityNum;
