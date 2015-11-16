@@ -7,7 +7,7 @@ public class ParticleDestroyScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		own = gameObject.GetComponent;
+//		own = gameObject.GetComponent;
 	}
 	
 	// Update is called once per frame
