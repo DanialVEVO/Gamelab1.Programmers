@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿/* [no code]
+ * Random Particle Selector Script
+ * Scripted by Chantal
+ */
+
+
+using UnityEngine;
 using System.Collections;
 
 public class RandomParticleSelector : MonoBehaviour {
@@ -16,10 +22,10 @@ public class RandomParticleSelector : MonoBehaviour {
 	
 	}
 
-	void ParticleRandomizer (){
-		selectedInt = Random.Range(0,2);
+	public void ParticleRandomizer (){
+		selectedInt = Random.Range(0,3);
+		print (selectedInt);
+		Instantiate(comicParticle[selectedInt]);
 	}
 
-	void Test (){
-	}
 }
