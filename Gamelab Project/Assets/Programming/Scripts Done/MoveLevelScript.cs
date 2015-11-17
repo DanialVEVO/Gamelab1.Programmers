@@ -12,6 +12,9 @@ public class MoveLevelScript : MonoBehaviour {
 
 	void OnCollisionEnter (Collision coll) {
 		if (coll.gameObject.tag == "Player"){
+			GameObject enemiesListInScene = GameObject.FindWithTag("Enemies List");
+			Destroy(enemiesListInScene);
+
 			Application.LoadLevel(nextLevelId);
 		}
 	}

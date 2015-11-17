@@ -1,5 +1,5 @@
 ﻿/* 7S_???_001
- * Keeping track of living&dead enemies Script
+ * Managing living&dead enemies Script
  * Scripted by Chantal
  */
 

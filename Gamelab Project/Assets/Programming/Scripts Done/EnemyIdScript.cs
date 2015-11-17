@@ -1,5 +1,5 @@
 ﻿/* 7S_???_001
- * Enemie IDs Script
+ * Managing living&dead enemies Script
  * Scripted by Chantal
  */
 
