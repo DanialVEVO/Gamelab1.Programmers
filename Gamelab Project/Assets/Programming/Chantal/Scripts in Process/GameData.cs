@@ -11,7 +11,7 @@ using System.Collections.Generic;
 [Serializable]
 class GameData {
 	public int levelID;
-	public int[] enemies;
+	public List<int> enemies = new List<int>();
 	public int collectables;
 	public bool[] abilities;
 	public int playerHP;

@@ -16,9 +16,10 @@ public class SaveLoadGameScript : MonoBehaviour {
 	public ManaScript manaScr;
 	public EnemiesManagerScript enemiesManagerScr;
 	public PlayerManager playerManagerScr;
+	public Pickup pickupScr;
 
 	void Awake () {
-	//	DontDestroyOnLoad(transform.gameObject);
+		DontDestroyOnLoad(transform.gameObject);
 	}
 
 	public void SaveGame () {
@@ -29,14 +30,14 @@ public class SaveLoadGameScript : MonoBehaviour {
 		data.levelID = Application.loadedLevel;
 		data.enemies = enemiesManagerScr.enemiesAliveID;
 		enemiesManagerScr.CheckAlive();
-		//	data.collectables =  //script not done
+		data.collectables =  pickupScr.maxPickupCount;
 		data.abilities = abilitySwitchScr.abilityUnlocked;
 		data.playerHP = playerHpScr.curHP;
 		data.playerLevens = playerHpScr.life;
 		data.playerMana = manaScr.manaValue;
-	//	data.playerPositionX = playerManagerScr.checkpoint.position.x;
-	//	data.playerPositionY = playerManagerScr.checkpoint.position.y;
-	//	data.playerPositionZ = playerManagerScr.checkpoint.position.z;
+		data.playerPositionX = playerManagerScr.checkpoint.position.x;
+		data.playerPositionY = playerManagerScr.checkpoint.position.y;
+		data.playerPositionZ = playerManagerScr.checkpoint.position.z;
 
 		bf.Serialize(file, data);
 		file.Close();
@@ -48,17 +49,17 @@ public class SaveLoadGameScript : MonoBehaviour {
 			FileStream file = File.Open(Application.persistentDataPath + "/PlayerData.dat", FileMode.Open);
 			GameData data = (GameData) bf.Deserialize(file); 
 
-		//	Application.LoadLevel(data.levelID);
+			Application.LoadLevel(data.levelID);
 			enemiesManagerScr.enemiesAliveID = data.enemies;
 			enemiesManagerScr.DestroyDead();
-			//	Debug.Log("Saved Collectables: "  + data.collectables);
+			pickupScr.maxPickupCount = data.collectables;
 			abilitySwitchScr.abilityUnlocked = data.abilities;
 			abilitySwitchScr.SetAbilitieSpr();
 			abilitySwitchScr.GetAbilityImg();
 			playerHpScr.curHP = data.playerHP;
 			playerHpScr.life = data.playerLevens;
 			manaScr.manaValue = data.playerMana;
-		//	transform.position = new Vector3(data.playerPositionX, data.playerPositionY, data.playerPositionZ);
+			transform.position = new Vector3(data.playerPositionX, data.playerPositionY, data.playerPositionZ);
 
 			file.Close();
 		}
