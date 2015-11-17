@@ -5,7 +5,7 @@ public class Cloud : CloudStart	 {
 	public Transform curTarget;
 	
 	void Start(){
-		curTarget = target;
+		curTarget = GameObject.Find("CloudEnd").transform;
 	}
 	
 	// Update is called once per frame
