@@ -12,21 +12,20 @@ public class Unit : Grid {
 	int targetIndex;
 	public float timersecs;
 
-	IEnumerator Timer (){
+	void Awake() {
+		oldTargetPos = target.position;
+		//PathRequestManager.RequestPath(transform.position,target.position, OnPathFound);
+		StartCoroutine(Timer());
 
+	}
+
+	IEnumerator Timer (){
 		yield return new WaitForSeconds(timersecs);
 		if(target.position != oldTargetPos){
 			PathRequestManager.RequestPath(transform.position,target.position, OnPathFound);
 			oldTargetPos = target.position;
 		}
 		StartCoroutine(Timer());
-	}
-
-	void Start() {
-		oldTargetPos = target.position;
-		PathRequestManager.RequestPath(transform.position,target.position, OnPathFound);
-		StartCoroutine(Timer());
-
 	}
 	
 	public void OnPathFound(Vector3[] newPath, bool pathSuccessful) {
