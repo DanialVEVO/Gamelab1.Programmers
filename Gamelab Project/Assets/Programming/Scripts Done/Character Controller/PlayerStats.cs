@@ -1,5 +1,5 @@
 ﻿/* 7S_CHC_001
- * Player HP Script
+ * Player Stats Script
  * Scripted by Danial
  */
 
