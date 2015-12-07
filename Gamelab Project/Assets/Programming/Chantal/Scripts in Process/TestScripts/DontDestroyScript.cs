@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DontDestroyTest : MonoBehaviour {
+public class DontDestroyScript: MonoBehaviour {
 
 	void Awake () {
 		DontDestroyOnLoad(transform.gameObject);

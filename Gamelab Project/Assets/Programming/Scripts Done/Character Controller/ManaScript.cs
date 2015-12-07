@@ -88,7 +88,7 @@ public class ManaScript : MonoBehaviour {
 			}else {
 				manaUseTimer = manaUseTimerRes;
 				abilitySwitchScr.abilityNum = 0;
-				abilitySwitchScr.SetSwitchedAbility();
+				abilitySwitchScr.SetSwitchedAbility(0);
 				abilitySwitchScr.GetAbilityImg();
 			} 
 		}	
