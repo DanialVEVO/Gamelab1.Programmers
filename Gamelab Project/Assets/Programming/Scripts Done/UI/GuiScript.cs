@@ -79,6 +79,12 @@ public class GuiScript : MonoBehaviour {
 		saveLoadGameScr.LoadGame();
 	}
 
+	public void SaveCurrentGame(){
+		if (Application.loadedLevel != 0){
+			saveLoadGameScr.SaveGame();
+		}
+	}
+
 	public void SwitchPauseMode() {
 		if (Input.GetButtonDown("Pause")) {
 			if (inPause == false && menuPanels == MenuPanels.GamePlay) {
@@ -92,5 +98,4 @@ public class GuiScript : MonoBehaviour {
 			}
 		}
 	}
-
 }

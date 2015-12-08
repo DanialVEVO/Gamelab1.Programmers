@@ -11,18 +11,28 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class SaveLoadGameScript : MonoBehaviour {
 
-	public PlayerHpScript playerHpScr;
-	public AbilitySwitchScript abilitySwitchScr;
-	public ManaScript manaScr;
-	public EnemiesManagerScript enemiesManagerScr;
-	public PlayerManager playerManagerScr;
-	public Pickup pickupScr;
+	private PlayerHpScript playerHpScr;
+	private AbilitySwitchScript abilitySwitchScr;
+	private ManaScript manaScr;
+	private EnemiesManagerScript enemiesManagerScr;
+	private PlayerManager playerManagerScr;
+	private Pickup pickupScr;
 
 	void Awake () {
 		DontDestroyOnLoad(transform.gameObject);
 	}
 
+	void FindObjects(){
+		playerHpScr = GameObject.Find("testplayer").GetComponent<PlayerHpScript>();
+		abilitySwitchScr = GameObject.Find("AbilitySwitch").GetComponent<AbilitySwitchScript>();
+		manaScr = GameObject.Find("Mana Bar").GetComponent<ManaScript>();
+		enemiesManagerScr = GameObject.Find("enemyManager").GetComponent<EnemiesManagerScript>();
+		playerManagerScr = GameObject.Find("name").GetComponent<PlayerManager>();
+		pickupScr = GameObject.Find("name").GetComponent<Pickup>();
+	}
+
 	public void SaveGame () {
+		FindObjects();
 		BinaryFormatter bf = new BinaryFormatter();
 		FileStream file = File.Create(Application.persistentDataPath + "/PlayerData.dat");
 		GameData data = new GameData();
@@ -50,6 +60,7 @@ public class SaveLoadGameScript : MonoBehaviour {
 			GameData data = (GameData) bf.Deserialize(file); 
 
 			Application.LoadLevel(data.levelID);
+			FindObjects();
 			enemiesManagerScr.enemiesAliveID = data.enemies;
 			enemiesManagerScr.DestroyDead();
 			pickupScr.maxPickupCount = data.collectables;
